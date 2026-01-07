@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ColorPicker } from "./ColorPicker";
+import { ColorPicker } from "./components/ColorPicker";
 import type { ColorResult } from "./types";
 
 export default function App() {
