@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import { createPortal } from "react-dom";
 import "./ColorPicker.css";
 import { ColorInput } from "./ColorInput";
@@ -247,13 +253,13 @@ export function ColorPicker({
         handleCancel();
       }
     };
-    
+
     const keyHandler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         if (applyOnEscape) {
-           apply();
+          apply();
         } else {
-           handleCancel();
+          handleCancel();
         }
       }
     };
@@ -261,14 +267,14 @@ export function ColorPicker({
     window.addEventListener("mousedown", handler);
     window.addEventListener("keydown", keyHandler);
     return () => {
-       window.removeEventListener("mousedown", handler);
-       window.removeEventListener("keydown", keyHandler);
+      window.removeEventListener("mousedown", handler);
+      window.removeEventListener("keydown", keyHandler);
     };
   }, [open, handleCancel, applyOnEscape]);
 
   /* ===== Portal position ===== */
   const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (open && triggerRef.current && panelRef.current) {
       const pos = calculatePortalPosition(
         triggerRef.current.getBoundingClientRect(),
@@ -335,10 +341,10 @@ export function ColorPicker({
             ref={panelRef}
             className={`picker theme-${theme}`}
             style={{
-               ...panelStyle,
-               ["--bg" as any]: backgroundColor,
-               ["--primary" as any]: primaryColor,
-               ["--secondary" as any]: secondaryColor,
+              ...panelStyle,
+              ["--bg" as any]: backgroundColor,
+              ["--primary" as any]: primaryColor,
+              ["--secondary" as any]: secondaryColor,
             }}
           >
             <ColorPickerBody
