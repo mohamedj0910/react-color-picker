@@ -11,25 +11,7 @@ import { ColorInput } from "./ColorInput";
 import { ColorSlider } from "./ColorSlider";
 import { ColorPickerActions } from "./ColorPickerActions";
 import { ColorPickerBody } from "./ColorPickerBody";
-
-export type ColorResult = {
-  hex: string;
-  rgba: string;
-  hsl: string;
-};
-
-export type ColorPickerProps = {
-  value: string;
-  onChange: (color: ColorResult) => void;
-  onOpen?: () => void;
-  onClose?: () => void;
-  theme?: "light" | "dark";
-  size?: number;
-  backgroundColor?: string;
-  primaryColor?: string;
-  secondaryColor?: string;
-  applyOnEscape?: boolean;
-};
+import type { ColorPickerProps } from "../types";
 
 /* ===== Utils ===== */
 function hsvToRgb(h: number, s: number, v: number) {

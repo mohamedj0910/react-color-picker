@@ -1,14 +1,19 @@
-export interface ColorResult {
+
+export type ColorResult = {
   hex: string;
   rgba: string;
   hsl: string;
-}
+};
 
-export type Theme = "light" | "dark";
-
-export interface ColorPickerProps {
+export type ColorPickerProps = {
   value: string;
   onChange: (color: ColorResult) => void;
-  theme?: Theme;
-  size?: number; // square size in px, default 40, min 10, max 150
-}
+  onOpen?: () => void;
+  onClose?: () => void;
+  theme?: "light" | "dark";
+  size?: number;
+  backgroundColor?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  applyOnEscape?: boolean;
+};
