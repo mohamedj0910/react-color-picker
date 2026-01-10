@@ -128,25 +128,24 @@ function calculatePortalPosition(
   panelWidth: number,
   panelHeight: number
 ) {
-  const spaceBottom = window.innerHeight - trigger.bottom;
+  const { innerWidth, innerHeight, scrollX, scrollY } = window;
+  
+  // Vertical Logic
+  const spaceBottom = innerHeight - trigger.bottom;
   const spaceTop = trigger.top;
+  
+  let top = trigger.bottom + scrollY;
+    if (spaceBottom < panelHeight && spaceTop >= panelHeight) {
+    top = trigger.top - panelHeight + scrollY;
+  }
+  let left = trigger.left + scrollX; // Default: Align left edge
+    if (trigger.left + panelWidth > innerWidth) {
+    if (trigger.right - panelWidth >= 0) {
+      left = trigger.right - panelWidth + scrollX;
+    }
+  }
 
-  if (spaceBottom >= panelHeight)
-    return {
-      top: trigger.bottom + window.scrollY,
-      left: trigger.left + window.scrollX,
-    };
-
-  if (spaceTop >= panelHeight)
-    return {
-      top: trigger.top - panelHeight + window.scrollY,
-      left: trigger.left + window.scrollX,
-    };
-
-  return {
-    top: trigger.bottom + window.scrollY,
-    left: trigger.left + window.scrollX,
-  };
+  return { top, left };
 }
 
 /* ===== Component ===== */
