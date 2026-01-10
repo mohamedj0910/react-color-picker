@@ -11,7 +11,7 @@ import { ColorInput } from "./ColorInput";
 import { ColorSlider } from "./ColorSlider";
 import { ColorPickerActions } from "./ColorPickerActions";
 import { ColorPickerBody } from "./ColorPickerBody";
-import type { ColorPickerProps } from "../types";
+import type { ColorPickerProps } from "./types";
 
 /* ===== Utils ===== */
 function hsvToRgb(h: number, s: number, v: number) {

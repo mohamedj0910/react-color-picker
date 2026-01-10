@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ColorPicker } from "./components/ColorPicker";
-import type { ColorResult } from "./types";
+import { ColorPicker } from "./components/colorPicker/ColorPicker";
+import type { ColorResult } from "./components/colorPicker/types";
 
 export default function App() {
   // Controlled value
@@ -23,14 +23,15 @@ export default function App() {
           marginBottom: "20px",
         }}
       />
-
-      <ColorPicker
-        value={color.hex}
-        onChange={(newColor: ColorResult) => setColor(newColor)}
-        theme="light"
-        size={10}
-        // primaryColor="#333333"
-      />
+      <div className="container">
+        <ColorPicker
+          value={color.hex}
+          onChange={(newColor: ColorResult) => setColor(newColor)}
+          theme="light"
+          size={10}
+          // primaryColor="#333333"
+        />
+      </div>
     </div>
   );
 }
