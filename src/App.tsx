@@ -3,35 +3,44 @@ import { ColorPicker } from "./components/colorPicker/ColorPicker";
 import type { ColorResult } from "./components/colorPicker/types";
 
 export default function App() {
-  // Controlled value
-  const [color, setColor] = useState<ColorResult>({
-    hex: "#6745c2",
-    rgba: "rgba(103,69,194,1)",
-    hsl: "hsl(257, 47%, 52%)",
-  });
+  const [color, setColor] = useState("#6745c2");
+  const positions = [
+    "Top Left",
+    "Top Center",
+    "Top Right",
+    "Center Left",
+    "Center Center",
+    "Center Right",
+    "Bottom Left",
+    "Bottom Center",
+    "Bottom Right",
+  ];
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Selected Color:</h1>
-      <div
-        style={{
-          width: "100px",
-          height: "100px",
-          background: color.rgba,
-          border: "1px solid #000",
-          borderRadius: "8px",
-          marginBottom: "20px",
-        }}
-      />
-      <div className="container">
-        <ColorPicker
-          value={color.hex}
-          onChange={(newColor: ColorResult) => setColor(newColor)}
-          theme="light"
-          size={10}
-          // primaryColor="#333333"
-        />
-      </div>
+    <div className="container-root">
+      <header className="container-header">
+        <h1>Color Picker Positions</h1>
+
+        <div className="color-preview">
+          <span>Selected</span>
+          <div className="swatch" style={{ background: color }} />
+          <code>{color}</code>
+        </div>
+      </header>
+
+      <main className="grid-wrapper">
+        {positions.map((label) => (
+          <div key={label} className="card">
+            <span className={`card-label ${label}`}>{label}</span>
+            <ColorPicker
+              value={color}
+              onChange={(c: ColorResult) => setColor(c.hex)}
+              theme="light"
+              size={20}
+            />
+          </div>
+        ))}
+      </main>
     </div>
   );
 }
