@@ -92,7 +92,7 @@
 
 /* ===== Picker Panel ===== */
 .picker {
-  width: 280px;
+  width: fit-content;
   background: var(--bg);
   color: var(--text);
   padding: 12px;
