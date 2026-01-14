@@ -5,14 +5,16 @@ export type ColorResult = {
   hsl: string;
 };
 
+export type Theme = 'light' | 'dark'
+
 export type ColorPickerProps = {
   value: string;
   onChange: (color: ColorResult) => void;
   onOpen?: () => void;
   onClose?: () => void;
-  theme?: "light" | "dark";
+  theme?: Theme;
   size?: number;
-  backgroundColor?: string;
+  backgroundColor?: color;
   primaryColor?: string;
   secondaryColor?: string;
   applyOnEscape?: boolean;

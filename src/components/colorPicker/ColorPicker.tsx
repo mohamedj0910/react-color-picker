@@ -129,17 +129,17 @@ function calculatePortalPosition(
   panelHeight: number
 ) {
   const { innerWidth, innerHeight, scrollX, scrollY } = window;
-  
+
   // Vertical Logic
   const spaceBottom = innerHeight - trigger.bottom;
   const spaceTop = trigger.top;
-  
+
   let top = trigger.bottom + scrollY;
-    if (spaceBottom < panelHeight && spaceTop >= panelHeight) {
+  if (spaceBottom < panelHeight && spaceTop >= panelHeight) {
     top = trigger.top - panelHeight + scrollY;
   }
   let left = trigger.left + scrollX; // Default: Align left edge
-    if (trigger.left + panelWidth > innerWidth) {
+  if (trigger.left + panelWidth > innerWidth) {
     if (trigger.right - panelWidth >= 0) {
       left = trigger.right - panelWidth + scrollX;
     }
@@ -254,8 +254,8 @@ export function ColorPicker({
   }, [open, handleCancel, applyOnEscape]);
 
   /* ===== Portal position ===== */
-  const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
-  useLayoutEffect(() => {
+
+  const updatePosition = () => {
     if (open && triggerRef.current && panelRef.current) {
       const pos = calculatePortalPosition(
         triggerRef.current.getBoundingClientRect(),
@@ -264,6 +264,26 @@ export function ColorPicker({
       );
       setPanelStyle({ position: "absolute", zIndex: 9999, ...pos });
     }
+  };
+
+  useLayoutEffect(() => {
+    if (!open) return;
+
+    const handleResize = () => updatePosition();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleResize, true);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleResize, true);
+    };
+  }, [open, updatePosition]);
+
+  const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
+
+  useLayoutEffect(() => {
+    updatePosition();
   }, [open]);
 
   const apply = () => {
