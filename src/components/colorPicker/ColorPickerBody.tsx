@@ -23,7 +23,7 @@ export const ColorPickerBody: React.FC<ColorPickerBodyProps> = ({
   const startDrag =
     (
       ref: React.RefObject<HTMLDivElement>,
-      cb: (x: number, y: number, r: DOMRect) => void
+      cb: (x: number, y: number, r: DOMRect) => void,
     ) =>
     (e: React.MouseEvent | React.TouchEvent) => {
       e.preventDefault();

@@ -33,7 +33,8 @@ export const ColorSlider: React.FC<ColorSliderProps> = ({
     calculateChange(p.clientX);
 
     const move = (ev: MouseEvent | TouchEvent) => {
-      const point = "touches" in ev ? (ev as TouchEvent).touches[0] : (ev as MouseEvent);
+      const point =
+        "touches" in ev ? (ev as TouchEvent).touches[0] : (ev as MouseEvent);
       calculateChange(point.clientX);
     };
 
@@ -59,8 +60,13 @@ export const ColorSlider: React.FC<ColorSliderProps> = ({
     >
       {overlayColor && (
         <>
-           <div className="grid"></div>
-           <div className="alpha-color" style={{ backgroundImage: `linear-gradient(to right, transparent, ${overlayColor})` }}></div>
+          <div className="grid"></div>
+          <div
+            className="alpha-color"
+            style={{
+              backgroundImage: `linear-gradient(to right, transparent, ${overlayColor})`,
+            }}
+          ></div>
         </>
       )}
       <div className="thumb" style={{ left: `${value * 100}%` }} />
