@@ -1,11 +1,10 @@
-
 export type ColorResult = {
   hex: string;
   rgba: string;
   hsl: string;
 };
 
-export type Theme = 'light' | 'dark'
+export type Theme = "light" | "dark";
 
 export type ColorPickerProps = {
   value: string;

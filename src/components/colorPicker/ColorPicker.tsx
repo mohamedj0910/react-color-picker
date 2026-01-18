@@ -60,7 +60,7 @@ function rgbToHsl(r: number, g: number, b: number) {
   }
 
   return `hsl(${Math.round(h)}, ${Math.round(s * 100)}%, ${Math.round(
-    l * 100
+    l * 100,
   )}%)`;
 }
 
@@ -126,7 +126,7 @@ function hslToRgb(h: number, s: number, l: number) {
 function calculatePortalPosition(
   trigger: DOMRect,
   panelWidth: number,
-  panelHeight: number
+  panelHeight: number,
 ) {
   const { innerWidth, innerHeight, scrollX, scrollY } = window;
 
@@ -260,7 +260,7 @@ export function ColorPicker({
       const pos = calculatePortalPosition(
         triggerRef.current.getBoundingClientRect(),
         panelRef.current.offsetWidth,
-        panelRef.current.offsetHeight
+        panelRef.current.offsetHeight,
       );
       setPanelStyle({ position: "absolute", zIndex: 9999, ...pos });
     }
@@ -390,7 +390,7 @@ export function ColorPicker({
 
             <ColorPickerActions onCancel={handleCancel} onApply={apply} />
           </div>,
-          document.body
+          document.body,
         )}
     </>
   );
