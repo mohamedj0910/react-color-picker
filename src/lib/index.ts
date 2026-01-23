@@ -1,2 +1,1 @@
-import "../index.css";
-export { ColorPicker } from "../components/colorPicker/ColorPicker";
+export { ColorPicker as default } from "../components/colorPicker/ColorPicker";
