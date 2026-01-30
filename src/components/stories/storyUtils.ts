@@ -5,7 +5,6 @@ export type StoryConfig = {
   id: STORY_ITEM;
   title: string;
   component: React.ComponentType | null;
-  active: boolean;
 };
 
 export const stories: Record<STORY_ITEM, StoryConfig> = {
@@ -13,6 +12,5 @@ export const stories: Record<STORY_ITEM, StoryConfig> = {
     id: "size",
     title: "Size",
     component: null,
-    active: true,
   },
 };
