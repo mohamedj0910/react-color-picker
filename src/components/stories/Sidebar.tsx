@@ -14,8 +14,6 @@ export const Sidebar = ({ currentStoryId, onSelectStory }: SidebarProps) => {
       {storyList.map((id) => {
         const story = stories[id];
 
-        if (!story.active) return null;
-
         return (
           <div
             key={id}
