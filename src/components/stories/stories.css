@@ -1,0 +1,89 @@
+.story-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: white;
+  color: #333;
+}
+.story-sidebar {
+  width: 250px;
+  background: #f7f7f7;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.story-sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+.sidebar-item {
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.sidebar-item:hover {
+  border-color: #ccc;
+}
+.sidebar-item.active {
+  background: #e6f7ff;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+.sidebar-item.disabled {
+  opacity: 0.5;
+  /* cursor: not-allowed; */
+  background: #eee;
+  color: #999;
+}
+.story-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+.story-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.story-description {
+  margin-bottom: 30px;
+  color: #555;
+  line-height: 1.6;
+}
+.try-now-section {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.try-now-header {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.control-panel {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.control-panel label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.control-panel input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
