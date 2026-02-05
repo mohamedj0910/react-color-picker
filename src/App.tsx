@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ColorPicker } from "./components/colorPicker/ColorPicker";
 import type { ColorResult } from "./components/colorPicker/types";
+import { StoryLayout } from "./components/stories/StoryLayout";
 
 export default function App() {
   const [color, setColor] = useState("#6745c2");
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <div className="container-root">
-      <header className="container-header">
+      {/* <header className="container-header">
         <h1>Color Picker Positions</h1>
 
         <div className="color-preview">
@@ -40,7 +41,8 @@ export default function App() {
             />
           </div>
         ))}
-      </main>
+      </main> */}
+      <StoryLayout />
     </div>
   );
 }
