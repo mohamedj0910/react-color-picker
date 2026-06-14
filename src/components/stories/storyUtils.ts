@@ -1,5 +1,7 @@
+import { SizeStory } from "./SizeStory";
+
 export type STORY_ITEM = (typeof storyList)[number];
-export const storyList = ["size"] as const;
+export const storyList = ["size", "backgroundColor"] as const;
 
 export type StoryConfig = {
   id: STORY_ITEM;
@@ -11,6 +13,11 @@ export const stories: Record<STORY_ITEM, StoryConfig> = {
   size: {
     id: "size",
     title: "Size",
+    component: SizeStory,
+  },
+  backgroundColor: {
+    id: "backgroundColor",
+    title: "Background Color",
     component: null,
   },
 };
