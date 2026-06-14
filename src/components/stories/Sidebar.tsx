@@ -9,19 +9,25 @@ interface SidebarProps {
 export const Sidebar = ({ currentStoryId, onSelectStory }: SidebarProps) => {
   return (
     <div className="story-sidebar">
-      <h2>Docs</h2>
+      <div className="sidebar-header">
+        <p className="sidebar-eyebrow">Docs</p>
+        <h2>Variants</h2>
+      </div>
 
       {storyList.map((id) => {
         const story = stories[id];
+        const isActive = currentStoryId === id;
 
         return (
-          <div
+          <button
             key={id}
-            className={`sidebar-item ${currentStoryId === id ? "active" : ""}`}
+            type="button"
+            className={`sidebar-item ${isActive ? "active" : ""}`}
+            aria-current={isActive ? "page" : undefined}
             onClick={() => onSelectStory(id)}
           >
             {story.title}
-          </div>
+          </button>
         );
       })}
     </div>

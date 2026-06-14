@@ -6,9 +6,7 @@ export const SizeStory = () => {
   const [color, setColor] = useState({ hex: "#4caf50", rgba: "", hsl: "" });
 
   return (
-    <div>
-      <h1 className="story-title">Size Prop</h1>
-
+    <div className="story-page">
       <div className="story-description">
         <p>
           The <code>size</code> prop allows you to control the dimensions (width
@@ -39,7 +37,7 @@ export const SizeStory = () => {
 
       <div className="try-now-section">
         <h3 className="try-now-header">Try Now</h3>
-        <p style={{ marginBottom: "10px", fontSize: "0.9em", color: "#666" }}>
+        <p className="story-note">
           Enter a value below to see the Color Picker resize in real-time.
         </p>
 
