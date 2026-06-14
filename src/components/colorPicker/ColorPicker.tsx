@@ -214,6 +214,11 @@ export function ColorPicker({
     handleClose();
   }, [previousColor, syncInternalState]);
 
+  const apply = useCallback(() => {
+    onChange({ hex, rgba, hsl });
+    handleClose();
+  }, [hex, rgba, hsl, onChange]);
+
   /* ===== Sync initial color when value updates externally while open ===== */
   useEffect(() => {
     if (open) {
@@ -251,11 +256,13 @@ export function ColorPicker({
       window.removeEventListener("mousedown", handler);
       window.removeEventListener("keydown", keyHandler);
     };
-  }, [open, handleCancel, applyOnEscape]);
+  }, [open, handleCancel, applyOnEscape, apply]);
 
   /* ===== Portal position ===== */
 
-  const updatePosition = () => {
+  const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
+
+  const updatePosition = useCallback(() => {
     if (open && triggerRef.current && panelRef.current) {
       const pos = calculatePortalPosition(
         triggerRef.current.getBoundingClientRect(),
@@ -264,7 +271,7 @@ export function ColorPicker({
       );
       setPanelStyle({ position: "absolute", zIndex: 9999, ...pos });
     }
-  };
+  }, [open]);
 
   useLayoutEffect(() => {
     if (!open) return;
@@ -280,16 +287,9 @@ export function ColorPicker({
     };
   }, [open, updatePosition]);
 
-  const [panelStyle, setPanelStyle] = useState<React.CSSProperties>({});
-
   useLayoutEffect(() => {
     updatePosition();
-  }, [open]);
-
-  const apply = () => {
-    onChange({ hex, rgba, hsl });
-    handleClose();
-  };
+  }, [open, updatePosition]);
 
   // Handle color changes from ColorInput
   const handleColorInputChange = (values: {
