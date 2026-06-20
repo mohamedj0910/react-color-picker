@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { ColorPicker } from "./colorPicker/ColorPicker";
+import { Icon } from "./icons/Icon";
 import "./LandingPage.css";
 
 export const LandingPage = () => {
@@ -49,21 +50,7 @@ export const LandingPage = () => {
               <div className="hero-actions">
                 <Link to="/docs" className="cta-button primary-cta">
                   <span>Get Started</span>
-                  <svg
-                    className="cta-arrow"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    width="18"
-                    height="18"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  <Icon name="arrow-right" size={18} className="cta-arrow" />
                 </Link>
 
                 <a
@@ -220,20 +207,7 @@ export const LandingPage = () => {
             <div className="features-grid">
               <div className="feature-card glass-panel glass-panel-hover">
                 <div className="feature-icon-box blue-glow">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                    />
-                  </svg>
+                  <Icon name="customization" size={24} />
                 </div>
                 <h3>Accent Customization</h3>
                 <p>
@@ -244,20 +218,7 @@ export const LandingPage = () => {
 
               <div className="feature-card glass-panel glass-panel-hover">
                 <div className="feature-icon-box purple-glow">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                    />
-                  </svg>
+                  <Icon name="theme" size={24} />
                 </div>
                 <h3>Light & Dark Themes</h3>
                 <p>
@@ -268,25 +229,45 @@ export const LandingPage = () => {
 
               <div className="feature-card glass-panel glass-panel-hover">
                 <div className="feature-icon-box pink-glow">
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                    />
-                  </svg>
+                  <Icon name="accessibility" size={24} />
                 </div>
                 <h3>Keyboard Safe & Escape Support</h3>
                 <p>
                   Complete accessibility integration. Safely discard or commit
                   color changes by pressing the Escape key.
+                </p>
+              </div>
+
+              <div className="feature-card glass-panel glass-panel-hover">
+                <div className="feature-icon-box blue-glow">
+                  <Icon name="portal" size={24} />
+                </div>
+                <h3>Smart Overlay Portals</h3>
+                <p>
+                  Mounts popovers directly onto document.body using portals, 
+                  completely bypassing parent container overflow and clipping limits.
+                </p>
+              </div>
+
+              <div className="feature-card glass-panel glass-panel-hover">
+                <div className="feature-icon-box purple-glow">
+                  <Icon name="positioning" size={24} />
+                </div>
+                <h3>Dynamic Auto-Positioning</h3>
+                <p>
+                  Intelligently calculates trigger block bounding rectangles to 
+                  flip popovers or adjust edges, remaining inside viewport bounds.
+                </p>
+              </div>
+
+              <div className="feature-card glass-panel glass-panel-hover">
+                <div className="feature-icon-box pink-glow">
+                  <Icon name="colorsync" size={24} />
+                </div>
+                <h3>Universal Formats & Syncing</h3>
+                <p>
+                  Equipped with segmented inputs for real-time conversion 
+                  between HEX, RGBA, and HSLA values including alpha channel transparency.
                 </p>
               </div>
             </div>
