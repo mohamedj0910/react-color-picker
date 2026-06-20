@@ -97,7 +97,7 @@
 
 /* ===== Picker Panel ===== */
 .picker {
-  width: fit-content;
+  width: 240px;
   background: var(--bg);
   color: var(--text);
   padding: 12px;
@@ -114,7 +114,7 @@
 /* ===== Preview ===== */
 .preview {
   position: relative;
-  height: 40px;
+  height: 24px;
   border-radius: 6px;
   border: 1px solid var(--preview-border);
   overflow: hidden;
@@ -129,7 +129,7 @@
 /* ===== SV Panel ===== */
 .sv {
   position: relative;
-  height: 150px;
+  height: 130px;
   border-radius: 6px;
   cursor: crosshair;
   overflow: hidden;

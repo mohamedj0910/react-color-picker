@@ -5,27 +5,43 @@ export const PrimaryColorStory = () => {
   const [primaryColor, setPrimaryColor] = useState("#4f46e5");
   const [color, setColor] = useState({ hex: "#6366f1", rgba: "", hsl: "" });
 
+  const codeString = `import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      primaryColor="${primaryColor}"
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Prop API</h3>
         <p>
-          The <code>primaryColor</code> prop controls the primary accent used in
-          the panel UI.
+          The <code>primaryColor</code> prop controls the primary accent color used in the panel UI layout.
         </p>
         <br />
         <h3>How it works</h3>
         <p>
-          The value is applied via a CSS variable to highlight key UI elements.
+          The value is fed dynamically as a CSS variable to highlight buttons, slider track nodes, ticks, and interactive inputs.
         </p>
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
-        <p>Set a primary accent color that matches your product branding.</p>
+        <h3>Usage Example</h3>
+        <p>
+          Customize the primary accent color:
+        </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
           Adjust the primary color to see the panel accents update.
         </p>

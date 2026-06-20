@@ -102,21 +102,25 @@ export function ColorInput({
   };
 
   return (
-    <div className={`color-input theme-${theme}`}>
-      <div className="tabs">
+    <div className={`color-input-container theme-${theme}`}>
+      {/* Segmented Tab Controls */}
+      <div className="tabs-segmented">
         <button
+          type="button"
           className={activeTab === "rgba" ? "active" : ""}
           onClick={() => setActiveTab("rgba")}
         >
           RGBA
         </button>
         <button
+          type="button"
           className={activeTab === "hsla" ? "active" : ""}
           onClick={() => setActiveTab("hsla")}
         >
           HSLA
         </button>
         <button
+          type="button"
           className={activeTab === "hex" ? "active" : ""}
           onClick={() => setActiveTab("hex")}
         >
@@ -124,11 +128,11 @@ export function ColorInput({
         </button>
       </div>
 
-      <div className="input-container">
+      {/* Segmented Inputs Container */}
+      <div className="input-group-wrapper">
         {activeTab === "rgba" && (
-          <div className="input-group">
-            <div className="input-field">
-              <label>R</label>
+          <div className="input-group-segmented">
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -136,9 +140,9 @@ export function ColorInput({
                 value={rgbaValues.r}
                 onChange={(e) => handleRgbaChange("r", e.target.value)}
               />
+              <label>R</label>
             </div>
-            <div className="input-field">
-              <label>G</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -146,9 +150,9 @@ export function ColorInput({
                 value={rgbaValues.g}
                 onChange={(e) => handleRgbaChange("g", e.target.value)}
               />
+              <label>G</label>
             </div>
-            <div className="input-field">
-              <label>B</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -156,25 +160,25 @@ export function ColorInput({
                 value={rgbaValues.b}
                 onChange={(e) => handleRgbaChange("b", e.target.value)}
               />
+              <label>B</label>
             </div>
-            <div className="input-field">
-              <label>A</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
                 max="1"
                 step="0.01"
-                value={rgbaValues.a.toFixed(2)}
+                value={rgbaValues.a}
                 onChange={(e) => handleRgbaChange("a", e.target.value)}
               />
+              <label>A</label>
             </div>
           </div>
         )}
 
         {activeTab === "hsla" && (
-          <div className="input-group">
-            <div className="input-field">
-              <label>H</label>
+          <div className="input-group-segmented">
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -182,9 +186,9 @@ export function ColorInput({
                 value={hslaValues.h}
                 onChange={(e) => handleHslaChange("h", e.target.value)}
               />
+              <label>H</label>
             </div>
-            <div className="input-field">
-              <label>S</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -192,9 +196,9 @@ export function ColorInput({
                 value={hslaValues.s}
                 onChange={(e) => handleHslaChange("s", e.target.value)}
               />
+              <label>S</label>
             </div>
-            <div className="input-field">
-              <label>L</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
@@ -202,31 +206,33 @@ export function ColorInput({
                 value={hslaValues.l}
                 onChange={(e) => handleHslaChange("l", e.target.value)}
               />
+              <label>L</label>
             </div>
-            <div className="input-field">
-              <label>A</label>
+            <div className="input-segment">
               <input
                 type="number"
                 min="0"
                 max="1"
                 step="0.01"
-                value={hslaValues.a.toFixed(2)}
+                value={hslaValues.a}
                 onChange={(e) => handleHslaChange("a", e.target.value)}
               />
+              <label>A</label>
             </div>
           </div>
         )}
 
         {activeTab === "hex" && (
-          <div className="input-group">
-            <div className="input-field hex-field">
-              <label>HEX</label>
+          <div className="input-group-segmented">
+            <div className="input-segment hex-segment">
+              <span className="hex-prefix">#</span>
               <input
                 type="text"
-                value={hexValue}
+                value={hexValue.replace("#", "")}
                 onChange={(e) => handleHexChange(e.target.value)}
-                placeholder="#000000"
+                placeholder="000000"
               />
+              <label>HEX</label>
             </div>
           </div>
         )}

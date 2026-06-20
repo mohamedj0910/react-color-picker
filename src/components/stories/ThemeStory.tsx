@@ -5,11 +5,23 @@ export const ThemeStory = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [color, setColor] = useState({ hex: "#2563eb", rgba: "", hsl: "" });
 
+  const codeString = `import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      theme="${theme}"
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Prop API</h3>
         <p>
-          The <code>theme</code> prop switches the panel between light and dark
+          The <code>theme</code> prop switches the panel between <code>light</code> and <code>dark</code>
           styles. It is useful when the picker lives inside different UI
           surfaces.
         </p>
@@ -17,20 +29,22 @@ export const ThemeStory = () => {
         <h3>How it works</h3>
         <p>
           Setting <code>theme</code> updates the panel class, which adjusts
-          background, text, and control colors.
+          background, text, border, slider, and control colors to suit the chosen palette.
         </p>
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
+        <h3>Usage Example</h3>
         <p>
-          Pass <code>theme</code> to match the surrounding UI. Use the selector
-          below to preview both modes.
+          Select a theme to see the code display modify its parameter:
         </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
           Toggle the theme and open the picker to see the panel update.
         </p>

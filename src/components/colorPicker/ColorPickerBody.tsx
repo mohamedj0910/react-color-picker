@@ -57,6 +57,25 @@ export const ColorPickerBody: React.FC<ColorPickerBodyProps> = ({
     onChange(newS, newV);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    let step = 0.02;
+    if (e.shiftKey) step = 0.1;
+
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      onChange(clamp(S + step, 0, 1), V);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      onChange(clamp(S - step, 0, 1), V);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      onChange(S, clamp(V + step, 0, 1));
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      onChange(S, clamp(V - step, 0, 1));
+    }
+  };
+
   return (
     <>
       <div className="preview">
@@ -75,6 +94,11 @@ export const ColorPickerBody: React.FC<ColorPickerBodyProps> = ({
         style={{ background: `hsl(${H},100%,50%)` }}
         onMouseDown={startDrag(svRef, handleDrag)}
         onTouchStart={startDrag(svRef, handleDrag)}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="slider"
+        aria-label="Color saturation and value selector"
+        aria-valuetext={`Saturation ${Math.round(S * 100)}%, Value ${Math.round(V * 100)}%`}
       >
         <div
           className="sv-cursor"

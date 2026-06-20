@@ -51,12 +51,40 @@ export const ColorSlider: React.FC<ColorSliderProps> = ({
     window.addEventListener("touchend", stop);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    let step = 0.01;
+    if (e.shiftKey) step = 0.1;
+
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+      e.preventDefault();
+      onChange(clamp(value + step, 0, 1));
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+      e.preventDefault();
+      onChange(clamp(value - step, 0, 1));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      onChange(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      onChange(1);
+    }
+  };
+
+  const sliderLabel = className === "hue" ? "Hue selection" : "Alpha transparency selection";
+
   return (
     <div
       ref={ref}
       className={`slider ${className}`}
       onMouseDown={handleMouseDown}
       onTouchStart={handleMouseDown}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="slider"
+      aria-valuenow={Math.round(value * 100)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label={sliderLabel}
     >
       {overlayColor && (
         <>

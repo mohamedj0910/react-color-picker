@@ -5,9 +5,21 @@ export const SizeStory = () => {
   const [size, setSize] = useState(40);
   const [color, setColor] = useState({ hex: "#4caf50", rgba: "", hsl: "" });
 
+  const codeString = `import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      size={${size}}
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Prop API</h3>
         <p>
           The <code>size</code> prop allows you to control the dimensions (width
           and height) of the Color Picker trigger button. It accepts a number
@@ -24,19 +36,18 @@ export const SizeStory = () => {
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
+        <h3>Usage Example</h3>
         <p>
-          Here's a basic example of using the <code>size</code> prop with the{" "}
-          <code>ColorPicker</code> component:
+          Adjust the slider in the playground. The code block will update the custom
+          size prop accordingly:
         </p>
-        <p>
-          This sets the picker to 40px by 40px. Adjust the <code>size</code>{" "}
-          value as needed for your layout.
-        </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
           Enter a value below to see the Color Picker resize in real-time.
         </p>
