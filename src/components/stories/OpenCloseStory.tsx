@@ -6,28 +6,48 @@ export const OpenCloseStory = () => {
   const [openCount, setOpenCount] = useState(0);
   const [closeCount, setCloseCount] = useState(0);
 
+  const codeString = `import { useState } from "react";
+import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  const [openCount, setOpenCount] = useState(0);
+  const [closeCount, setCloseCount] = useState(0);
+
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      onOpen={() => setOpenCount(prev => prev + 1)}
+      onClose={() => setCloseCount(prev => prev + 1)}
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Callbacks API</h3>
         <p>
-          Use <code>onOpen</code> and <code>onClose</code> to hook into picker
-          visibility changes.
+          Use <code>onOpen</code> and <code>onClose</code> callbacks to hook into color picker panel visibility states.
         </p>
         <br />
         <h3>How it works</h3>
         <p>
-          The callbacks fire when the panel opens or closes, making it easy to
-          trigger analytics or UI side effects.
+          These hooks fire immediately when the selector panel mounts or unmounts, enabling you to trigger analytics logs, play sound highlights, or freeze background elements.
         </p>
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
-        <p>Track how often the picker opens and closes using local state.</p>
+        <h3>Usage Example</h3>
+        <p>
+          Here is how to monitor toggle events via functions:
+        </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
           Open and close the picker to see the counters update.
         </p>

@@ -5,28 +5,43 @@ export const SecondaryColorStory = () => {
   const [secondaryColor, setSecondaryColor] = useState("#ef4444");
   const [color, setColor] = useState({ hex: "#f43f5e", rgba: "", hsl: "" });
 
+  const codeString = `import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      secondaryColor="${secondaryColor}"
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Prop API</h3>
         <p>
-          The <code>secondaryColor</code> prop controls the secondary accent
-          used in the panel UI.
+          The <code>secondaryColor</code> prop controls the secondary accent highlights used in the panel UI layout.
         </p>
         <br />
         <h3>How it works</h3>
         <p>
-          This value feeds the secondary CSS variable for alerts and highlight
-          accents.
+          This value feeds a secondary CSS variables pipeline for alerts, cancel buttons, escape hints, and selection indicators.
         </p>
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
-        <p>Pair a secondary accent with your primary color for balanced UI.</p>
+        <h3>Usage Example</h3>
+        <p>
+          Pair a secondary accent with your primary brand accent:
+        </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
           Adjust the secondary color to see the panel accents update.
         </p>

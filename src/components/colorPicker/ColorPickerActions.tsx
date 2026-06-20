@@ -11,8 +11,10 @@ export const ColorPickerActions: React.FC<ColorPickerActionsProps> = ({
 }) => {
   return (
     <div className="actions">
-      <button onClick={onCancel}>Cancel</button>
-      <button className="apply" onClick={onApply}>
+      <button type="button" onClick={onCancel}>
+        Cancel
+      </button>
+      <button type="button" className="apply" onClick={onApply}>
         Apply
       </button>
     </div>

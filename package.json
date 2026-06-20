@@ -26,6 +26,7 @@
   "scripts": {
     "dev": "vite",
     "build:lib": "vite build --mode lib",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier . --write"
@@ -46,5 +47,8 @@
     "vite": "^7.2.4",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.18.0"
   }
 }

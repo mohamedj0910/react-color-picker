@@ -168,7 +168,7 @@ export function ColorPicker({
   const [A, setA] = useState(1);
   const [previousColor, setPreviousColor] = useState<string>(value);
 
-  const triggerRef = useRef<HTMLDivElement>(null!);
+  const triggerRef = useRef<HTMLButtonElement>(null!);
   const panelRef = useRef<HTMLDivElement>(null!);
 
   /* ===== Derived ===== */
@@ -325,8 +325,9 @@ export function ColorPicker({
 
   return (
     <>
-      <div
+      <button
         ref={triggerRef}
+        type="button"
         className={`color-picker theme-${theme}`}
         style={{
           width: size,
@@ -334,6 +335,9 @@ export function ColorPicker({
           background: open ? rgba : value,
         }}
         onClick={() => (open ? handleClose() : handleOpen())}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-label={`Color picker. Current color is ${value}`}
       />
 
       {open &&
@@ -341,6 +345,8 @@ export function ColorPicker({
           <div
             ref={panelRef}
             className={`picker theme-${theme}`}
+            role="dialog"
+            aria-label="Color picker panel"
             style={{
               ...panelStyle,
               ["--bg" as any]: backgroundColor,

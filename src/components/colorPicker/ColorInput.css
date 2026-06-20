@@ -1,114 +1,190 @@
-.color-input {
+.color-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== Segmented Tabs Control ===== */
+.tabs-segmented {
+  display: flex;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 2px;
+  border-radius: 8px;
   width: 100%;
 }
 
-.color-input .tabs {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
+.theme-dark .tabs-segmented {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.color-input .tabs button {
+.tabs-segmented button {
   flex: 1;
-  padding: 6px 12px;
+  background: transparent;
   border: none;
-  background: var(--secondary, rgba(0, 0, 0, 0.05));
-  color: var(--text, #333);
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.color-input.theme-dark .tabs button {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ddd;
-}
-
-.color-input .tabs button:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.color-input.theme-dark .tabs button:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.color-input .tabs button.active {
-  background: var(--primary, #007bff);
-  color: white;
-}
-
-.color-input.theme-dark .tabs button.active {
-  background: var(--primary, #0066cc);
-  color: white;
-}
-
-.input-group {
-  display: flex;
-  gap: 8px;
-}
-
-.input-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  &:not(.hex-field) {
-    max-width: 64px;
-  }
-}
-
-.input-field.hex-field {
-  flex: 2;
-}
-
-.input-field label {
+  border-radius: 6px;
+  padding: 6px 0;
   font-size: 11px;
-  font-weight: 600;
-  color: #555;
-  text-transform: uppercase;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  text-align: center;
+  transition: all 150ms ease;
 }
 
-.color-input.theme-dark .input-field label {
+.theme-dark .tabs-segmented button {
   color: #aaa;
 }
 
-.input-field input {
-  padding: 6px 8px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+.tabs-segmented button:hover:not(.active) {
+  color: #111;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.theme-dark .tabs-segmented button:hover:not(.active) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tabs-segmented button.active {
+  background: var(--primary, #6f63d9);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(111, 99, 217, 0.2);
+}
+
+.theme-dark .tabs-segmented button.active {
+  background: var(--primary, #a59bff);
+  color: #111118;
+  box-shadow: 0 2px 6px rgba(165, 155, 255, 0.3);
+}
+
+/* ===== Grouped Segmented Inputs ===== */
+.input-group-wrapper {
+  width: 100%;
+}
+
+.input-group-segmented {
+  display: flex;
+  align-items: stretch;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.theme-dark .input-group-segmented {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-segment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: background 150ms ease;
+  padding: 4px 0 6px;
+  min-width: 0; /* prevent overflow */
+}
+
+.input-segment:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .input-segment:not(:last-child) {
+  border-right-color: rgba(255, 255, 255, 0.08);
+}
+
+.input-segment input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
   font-size: 13px;
-  background: white;
-  color: #333;
-  transition: all 0.2s ease;
-}
-
-.color-input.theme-dark .input-field input {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ddd;
-}
-
-.input-field input:focus {
+  font-family: var(--font-mono, monospace);
+  color: #111;
+  padding: 4px 6px;
   outline: none;
-  border-color: var(--primary, #007bff);
-  box-shadow: 0 0 0 2px var(--primary-alpha, rgba(0, 123, 255, 0.1));
+  font-weight: 500;
 }
 
-.color-input.theme-dark .input-field input:focus {
-  border-color: #0066cc;
-  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+.theme-dark .input-segment input {
+  color: #eee;
 }
 
-/* Remove spinner for number inputs */
-.input-field input[type="number"]::-webkit-inner-spin-button,
-.input-field input[type="number"]::-webkit-outer-spin-button {
+.input-segment label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #888;
+  text-transform: uppercase;
+  margin-top: 1px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.theme-dark .input-segment label {
+  color: #666;
+}
+
+/* Focus Highlights */
+.input-segment:focus-within {
+  background: rgba(111, 99, 217, 0.05);
+}
+
+.theme-dark .input-segment:focus-within {
+  background: rgba(165, 155, 255, 0.06);
+}
+
+.input-segment input:focus ~ label {
+  color: var(--primary, #6f63d9);
+}
+
+.theme-dark .input-segment input:focus ~ label {
+  color: var(--primary, #a59bff);
+}
+
+/* ===== HEX Input Segment Styling ===== */
+.hex-segment {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  gap: 4px;
+}
+
+.hex-prefix {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: #999;
+  user-select: none;
+}
+
+.hex-segment input {
+  text-align: left;
+  padding: 0;
+  width: 80px;
+}
+
+.hex-segment label {
+  margin-top: 0;
+  margin-left: auto;
+  font-size: 9px;
+}
+
+/* Remove number spins */
+.input-segment input[type="number"]::-webkit-inner-spin-button,
+.input-segment input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.input-field input[type="number"] {
+.input-segment input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }

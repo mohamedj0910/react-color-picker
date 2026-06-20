@@ -4,34 +4,46 @@ import { ColorPicker } from "../colorPicker/ColorPicker";
 export const ApplyOnEscapeStory = () => {
   const [applyOnEscape, setApplyOnEscape] = useState(false);
   const [color, setColor] = useState({ hex: "#22c55e", rgba: "", hsl: "" });
-  console.log("applyOnEscape", applyOnEscape);
+
+  const codeString = `import { ColorPicker } from "@react/react-color-picker";
+
+export default function App() {
+  return (
+    <ColorPicker
+      value="${color.hex}"
+      applyOnEscape={${applyOnEscape}}
+    />
+  );
+}`;
+
   return (
     <div className="story-page">
       <div className="story-description">
+        <h3>Prop API</h3>
         <p>
-          The <code>applyOnEscape</code> prop changes the Escape key behavior.
-          When enabled, Escape applies the current color instead of canceling.
+          The <code>applyOnEscape</code> prop changes the behavior of the Escape key when the picker panel is active.
         </p>
         <br />
         <h3>How it works</h3>
         <p>
-          When the picker is open, pressing Escape either applies or cancels
-          based on this flag.
+          When enabled, pressing Escape commits the current slider selection. When disabled (default), pressing Escape discards the temporary selection and reverts the color value.
         </p>
       </div>
 
       <div className="code-example">
-        <h3>Example Usage</h3>
+        <h3>Usage Example</h3>
         <p>
-          Use <code>applyOnEscape</code> when you want Escape to confirm the
-          current selection.
+          Toggle the switch to see the code adjust:
         </p>
+        <pre className="code-block-pre">
+          <code>{codeString}</code>
+        </pre>
       </div>
 
       <div className="try-now-section">
-        <h3 className="try-now-header">Try Now</h3>
+        <h3 className="try-now-header">Interactive Sandbox</h3>
         <p className="story-note">
-          Toggle the setting, open the picker, then press Escape.
+          Toggle the setting, open the picker, then press Escape to test the transition.
         </p>
 
         <div className="control-panel">
@@ -41,7 +53,7 @@ export const ApplyOnEscapeStory = () => {
             checked={applyOnEscape}
             onChange={(e) => setApplyOnEscape(e.target.checked)}
           />
-          <span className="story-hint">Escape applies the current color</span>
+          <span className="story-hint">Escape confirms active color</span>
         </div>
 
         <div className="demo-area">
