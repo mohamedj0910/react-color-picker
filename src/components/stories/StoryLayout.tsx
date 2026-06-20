@@ -25,7 +25,6 @@ export const StoryLayout = () => {
         <main className="story-main">
           <header className="story-hero">
             <div className="story-hero-content">
-              <span className="story-badge-eyebrow">Interactive Spec</span>
               <h1>{activeStory.title}</h1>
               <p>{activeStory.description}</p>
             </div>
