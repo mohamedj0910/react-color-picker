@@ -9,6 +9,8 @@ import portalSvg from "./portal.svg?raw";
 import positioningSvg from "./positioning.svg?raw";
 import colorsyncSvg from "./colorsync.svg?raw";
 import sidebarSvg from "./sidebar.svg?raw";
+import chevronLeftSvg from "./chevron-left.svg?raw";
+import chevronRightSvg from "./chevron-right.svg?raw";
 
 export type IconName =
   | "docs"
@@ -21,7 +23,9 @@ export type IconName =
   | "portal"
   | "positioning"
   | "colorsync"
-  | "sidebar";
+  | "sidebar"
+  | "chevron-left"
+  | "chevron-right";
 
 export const iconMapping: Record<IconName, string> = {
   docs: docsSvg,
@@ -35,5 +39,7 @@ export const iconMapping: Record<IconName, string> = {
   positioning: positioningSvg,
   colorsync: colorsyncSvg,
   sidebar: sidebarSvg,
+  "chevron-left": chevronLeftSvg,
+  "chevron-right": chevronRightSvg,
 };
 export default iconMapping;

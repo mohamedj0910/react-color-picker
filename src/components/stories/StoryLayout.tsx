@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import { stories } from "./storyUtils";
+import { stories, storyList } from "./storyUtils";
 import type { STORY_ITEM } from "./storyUtils";
 import { Navbar } from "../Navbar";
 import { Icon } from "../icons/Icon";
@@ -15,6 +15,14 @@ export const StoryLayout = () => {
 
   const activeStory = stories[currentStoryId];
   const Content = activeStory?.component ?? StoryNotFound;
+
+  // Calculate Next and Previous Stories
+  const currentIndex = storyList.indexOf(currentStoryId);
+  const prevStoryId = currentIndex > 0 ? storyList[currentIndex - 1] : null;
+  const nextStoryId = currentIndex < storyList.length - 1 ? storyList[currentIndex + 1] : null;
+
+  const prevStory = prevStoryId ? stories[prevStoryId] : null;
+  const nextStory = nextStoryId ? stories[nextStoryId] : null;
 
   const handleSelectStory = (id: STORY_ITEM) => {
     setCurrentStoryId(id);
@@ -91,6 +99,47 @@ export const StoryLayout = () => {
           <section className="story-content">
             <Content />
           </section>
+
+          {/* Next / Previous Story Navigation */}
+          <footer className="story-navigation">
+            {prevStory ? (
+              <button
+                type="button"
+                className="story-nav-btn prev"
+                onClick={() => handleSelectStory(prevStory.id)}
+                title={`Go to ${prevStory.title}`}
+              >
+                <div className="nav-btn-icon-wrapper prev">
+                  <Icon name="chevron-left" size={20} />
+                </div>
+                <div className="nav-btn-text-content">
+                  <span className="nav-btn-label">Previous Variant</span>
+                  <span className="nav-btn-title">{prevStory.title}</span>
+                </div>
+              </button>
+            ) : (
+              <div className="story-nav-placeholder" />
+            )}
+
+            {nextStory ? (
+              <button
+                type="button"
+                className="story-nav-btn next"
+                onClick={() => handleSelectStory(nextStory.id)}
+                title={`Go to ${nextStory.title}`}
+              >
+                <div className="nav-btn-text-content">
+                  <span className="nav-btn-label">Next Variant</span>
+                  <span className="nav-btn-title">{nextStory.title}</span>
+                </div>
+                <div className="nav-btn-icon-wrapper next">
+                  <Icon name="chevron-right" size={20} />
+                </div>
+              </button>
+            ) : (
+              <div className="story-nav-placeholder" />
+            )}
+          </footer>
         </main>
       </div>
     </div>
