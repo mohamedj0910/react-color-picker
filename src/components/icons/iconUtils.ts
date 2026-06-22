@@ -8,6 +8,7 @@ import accessibilitySvg from "./accessibility.svg?raw";
 import portalSvg from "./portal.svg?raw";
 import positioningSvg from "./positioning.svg?raw";
 import colorsyncSvg from "./colorsync.svg?raw";
+import sidebarSvg from "./sidebar.svg?raw";
 
 export type IconName =
   | "docs"
@@ -19,7 +20,8 @@ export type IconName =
   | "accessibility"
   | "portal"
   | "positioning"
-  | "colorsync";
+  | "colorsync"
+  | "sidebar";
 
 export const iconMapping: Record<IconName, string> = {
   docs: docsSvg,
@@ -32,5 +34,6 @@ export const iconMapping: Record<IconName, string> = {
   portal: portalSvg,
   positioning: positioningSvg,
   colorsync: colorsyncSvg,
+  sidebar: sidebarSvg,
 };
 export default iconMapping;
