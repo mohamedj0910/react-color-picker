@@ -175,6 +175,9 @@
   .navbar {
     padding: 0 16px;
   }
+  .logo-text {
+    display: none; /* Hide branding text on mobile screens */
+  }
   .nav-btn span:not(.badge-coming-soon) {
     display: none;
   }

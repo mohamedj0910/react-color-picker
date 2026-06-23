@@ -622,6 +622,10 @@
   .story-sidebar-mobile-trigger {
     display: inline-flex; /* Always show trigger on mobile header */
   }
+
+  .story-sidebar-expand-trigger {
+    display: none !important; /* Hide desktop tab trigger on mobile */
+  }
 }
 
 @media (max-width: 600px) {
