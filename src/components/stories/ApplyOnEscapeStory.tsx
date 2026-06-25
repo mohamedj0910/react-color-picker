@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const ApplyOnEscapeStory = () => {
   const [applyOnEscape, setApplyOnEscape] = useState(false);
   const [color, setColor] = useState({ hex: "#22c55e", rgba: "", hsl: "" });
+  const { theme } = useTheme();
 
   const codeString = exampleUsageMap.applyOnEscape(applyOnEscape);
 
@@ -59,6 +61,7 @@ export const ApplyOnEscapeStory = () => {
               value={color.hex}
               onChange={setColor}
               applyOnEscape={applyOnEscape}
+              theme={theme}
             />
             <span>Current Color: {color.hex}</span>
           </div>

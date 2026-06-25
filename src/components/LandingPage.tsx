@@ -11,7 +11,7 @@ export const LandingPage = () => {
     rgba: "",
     hsl: "",
   });
-  const [bgColor, setBgColor] = useState({ hex: "#1e1b4b", rgba: "", hsl: "" });
+  const [bgColor, _setBgColor] = useState({ hex: "#1e1b4b", rgba: "", hsl: "" });
   const [pickerTheme, setPickerTheme] = useState<"light" | "dark">("dark");
 
   return (

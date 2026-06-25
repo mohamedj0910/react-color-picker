@@ -8,7 +8,7 @@ import "./stories.css";
 
 const StoryNotFound = () => <div className="story-not-found">Story not found</div>;
 
-export const StoryLayout = () => {
+export const StoryLayoutContent = () => {
   const [currentStoryId, setCurrentStoryId] = useState<STORY_ITEM>("size");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -91,6 +91,8 @@ export const StoryLayout = () => {
                   <span className="story-badge-eyebrow">Interactive Spec</span>
                   <h1>{activeStory.title}</h1>
                 </div>
+
+
               </div>
               <p>{activeStory.description}</p>
             </div>
@@ -144,5 +146,9 @@ export const StoryLayout = () => {
       </div>
     </div>
   );
+};
+
+export const StoryLayout = () => {
+  return <StoryLayoutContent />;
 };
 export default StoryLayout;

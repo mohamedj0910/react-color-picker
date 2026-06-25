@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const OpenCloseStory = () => {
   const [color, setColor] = useState({ hex: "#a855f7", rgba: "", hsl: "" });
   const [openCount, setOpenCount] = useState(0);
   const [closeCount, setCloseCount] = useState(0);
+  const { theme } = useTheme();
 
   const codeString = exampleUsageMap.openClose({ openCount, closeCount });
 
@@ -51,11 +53,12 @@ export const OpenCloseStory = () => {
               onChange={setColor}
               onOpen={() => setOpenCount((count) => count + 1)}
               onClose={() => setCloseCount((count) => count + 1)}
+              theme={theme}
             />
             <div className="story-metrics">
-              <span>Current Color: {color.hex}</span>
-              <span>Opened: {openCount} times</span>
-              <span>Closed: {closeCount} times</span>
+               <span>Current Color: {color.hex}</span>
+               <span>Opened: {openCount} times</span>
+               <span>Closed: {closeCount} times</span>
             </div>
           </div>
         </div>

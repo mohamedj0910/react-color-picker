@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const SizeStory = () => {
   const [size, setSize] = useState(40);
   const [color, setColor] = useState({ hex: "#4caf50", rgba: "", hsl: "" });
+  const { theme } = useTheme();
 
   const codeString = exampleUsageMap.size(size);
 
@@ -62,7 +64,7 @@ export const SizeStory = () => {
           </div>
 
           <div className="demo-area">
-            <ColorPicker value={color.hex} onChange={setColor} size={size} />
+            <ColorPicker value={color.hex} onChange={setColor} size={size} theme={theme} />
             <span>Current Color: {color.hex}</span>
           </div>
         </div>

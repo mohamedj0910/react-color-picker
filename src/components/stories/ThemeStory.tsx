@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const ThemeStory = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { theme, setTheme } = useTheme();
   const [color, setColor] = useState({ hex: "#2563eb", rgba: "", hsl: "" });
 
   const codeString = exampleUsageMap.theme(theme);
