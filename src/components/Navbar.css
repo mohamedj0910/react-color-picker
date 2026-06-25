@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   padding: 0 24px;
-  background: rgba(15, 18, 36, 0.4);
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
@@ -41,10 +41,10 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--logo-wrapper-bg);
   padding: 8px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--logo-wrapper-border);
 }
 
 .logo-dot {
@@ -72,7 +72,7 @@
 .logo-text {
   font-size: 1.15rem;
   letter-spacing: -0.02em;
-  color: #c7d2fe;
+  color: var(--logo-text-color);
 }
 
 .logo-bold {
@@ -185,3 +185,58 @@
     padding: 0 10px;
   }
 }
+
+/* Navbar Theme Toggle Button & Hover Animation */
+.navbar-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.navbar-theme-toggle:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.navbar-theme-toggle svg {
+  transition: transform var(--transition-normal);
+}
+
+.navbar-theme-toggle:hover svg {
+  transform: scale(1.1) rotate(15deg);
+}
+
+/* Light Theme Navbar Overrides */
+body.light .nav-btn:hover:not(.nav-btn-disabled) {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light .github-link {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body.light .github-link:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light .navbar-theme-toggle {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body.light .navbar-theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const SecondaryColorStory = () => {
   const [secondaryColor, setSecondaryColor] = useState("#ef4444");
   const [color, setColor] = useState({ hex: "#f43f5e", rgba: "", hsl: "" });
+  const { theme } = useTheme();
 
   const codeString = exampleUsageMap.secondaryColor(secondaryColor);
 
@@ -50,6 +52,7 @@ export const SecondaryColorStory = () => {
               value={secondaryColor}
               onChange={(next) => setSecondaryColor(next.hex)}
               size={28}
+              theme={theme}
             />
             <input
               type="text"
@@ -63,6 +66,7 @@ export const SecondaryColorStory = () => {
               value={color.hex}
               onChange={setColor}
               secondaryColor={secondaryColor}
+              theme={theme}
             />
             <span>Current Color: {color.hex}</span>
           </div>

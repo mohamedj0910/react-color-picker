@@ -64,7 +64,7 @@ export default function App() {
     />
   );
 }`,
-  openClose: (state: { openCount: number; closeCount: number }) => `import { useState } from "react";
+  openClose: (_state: { openCount: number; closeCount: number }) => `import { useState } from "react";
 import { ColorPicker } from "@react/react-color-picker";
 
 export default function App() {

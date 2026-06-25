@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { Icon } from "./icons/Icon";
+import { useTheme } from "./stories/ThemeContext";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const location = useLocation();
   const isDocs = location.pathname === "/docs";
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="navbar glass-panel">
@@ -40,6 +42,15 @@ export const Navbar = () => {
             <Icon name="playground" size={18} className="nav-icon" />
             <span>Playground</span>
             <span className="badge-coming-soon">Soon</span>
+          </button>
+
+          <button
+            type="button"
+            className="navbar-theme-toggle"
+            onClick={toggleTheme}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            <Icon name={theme === "dark" ? "sun" : "moon"} size={18} />
           </button>
 
           <a

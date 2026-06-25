@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { ColorPicker } from "../colorPicker/ColorPicker";
 import { exampleUsageMap } from "./exampleUsage";
+import { useTheme } from "./ThemeContext";
 
 export const PrimaryColorStory = () => {
   const [primaryColor, setPrimaryColor] = useState("#4f46e5");
   const [color, setColor] = useState({ hex: "#6366f1", rgba: "", hsl: "" });
+  const { theme } = useTheme();
 
   const codeString = exampleUsageMap.primaryColor(primaryColor);
 
@@ -50,6 +52,7 @@ export const PrimaryColorStory = () => {
               value={primaryColor}
               onChange={(next) => setPrimaryColor(next.hex)}
               size={28}
+              theme={theme}
             />
             <input
               type="text"
@@ -63,6 +66,7 @@ export const PrimaryColorStory = () => {
               value={color.hex}
               onChange={setColor}
               primaryColor={primaryColor}
+              theme={theme}
             />
             <span>Current Color: {color.hex}</span>
           </div>

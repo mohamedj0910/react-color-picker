@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px 20px;
-  background: rgba(10, 12, 24, 0.55);
+  background: var(--sidebar-bg);
   border-right: 1px solid var(--border-color);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -118,15 +118,15 @@
 
 .sidebar-item:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.05);
+  background: var(--sidebar-item-hover);
+  border-color: var(--sidebar-item-border);
   transform: translateX(2px);
 }
 
 .sidebar-item.active {
-  color: white;
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(6, 182, 212, 0.05) 100%);
-  border-color: rgba(79, 70, 229, 0.4);
+  color: var(--sidebar-active-text);
+  background: var(--sidebar-active-bg);
+  border-color: var(--sidebar-active-border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -141,7 +141,7 @@
   min-width: 0; /* Standard flexbox sizing fix to prevent child overflow */
   flex: 1; /* Grow to fill the remaining viewport width */
   background: radial-gradient(circle at 80% 10%, rgba(79, 70, 229, 0.04) 0%, transparent 40%),
-              #070913;
+              var(--bg-dark);
   height: 100%;
 }
 
@@ -303,9 +303,9 @@
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--panel-bg);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--panel-border);
 }
 
 .control-panel label {
@@ -324,7 +324,7 @@
   padding: 0 12px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  background: rgba(7, 9, 19, 0.8);
+  background: var(--input-bg);
   color: var(--text-primary);
   outline: none;
   font-size: 0.9rem;
@@ -353,9 +353,9 @@
 
 .demo-area {
   min-height: 180px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--demo-bg);
   border-radius: var(--radius-md);
-  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border: 1px dashed var(--demo-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -368,7 +368,7 @@
   font-size: 0.9rem;
   font-family: var(--font-mono);
   color: var(--text-secondary);
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--panel-bg);
   padding: 4px 10px;
   border-radius: 6px;
   border: 1px solid var(--border-color);
@@ -386,7 +386,7 @@
 .code-example {
   padding: 24px;
   border-radius: var(--radius-md);
-  background: rgba(15, 18, 36, 0.4);
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
 }
 
@@ -411,10 +411,10 @@
 .code-example code {
   font-family: var(--font-mono);
   font-size: 0.85em;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--logo-wrapper-bg);
   padding: 2px 6px;
   border-radius: 4px;
-  color: #c7d2fe;
+  color: var(--logo-text-color);
 }
 
 /* Monospace Code Editor Styling */
@@ -422,15 +422,15 @@
   margin-top: 14px;
   padding: 16px;
   border-radius: 10px;
-  background: #04050b;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--pre-bg);
+  border: 1px solid var(--pre-border);
   overflow-x: auto;
 }
 
 .code-block-pre code {
   background: transparent !important;
   padding: 0 !important;
-  color: #f8fafc !important;
+  color: var(--pre-text) !important;
   font-family: var(--font-mono) !important;
   font-size: 0.82rem !important;
   line-height: 1.5;
@@ -662,4 +662,31 @@
     width: 48px;
     height: 48px;
   }
+}
+
+/* Theme Toggle Button */
+.story-theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  background: var(--logo-wrapper-bg);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  margin-left: auto; /* Push to the right edge */
+  transition: all var(--transition-normal);
+}
+
+.story-theme-toggle-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-surface-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+body.light .story-theme-toggle-btn:hover {
+  border-color: rgba(0, 0, 0, 0.15);
 }

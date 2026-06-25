@@ -11,6 +11,8 @@ import colorsyncSvg from "./colorsync.svg?raw";
 import sidebarSvg from "./sidebar.svg?raw";
 import chevronLeftSvg from "./chevron-left.svg?raw";
 import chevronRightSvg from "./chevron-right.svg?raw";
+import sunSvg from "./sun.svg?raw";
+import moonSvg from "./moon.svg?raw";
 
 export type IconName =
   | "docs"
@@ -25,7 +27,9 @@ export type IconName =
   | "colorsync"
   | "sidebar"
   | "chevron-left"
-  | "chevron-right";
+  | "chevron-right"
+  | "sun"
+  | "moon";
 
 export const iconMapping: Record<IconName, string> = {
   docs: docsSvg,
@@ -41,5 +45,7 @@ export const iconMapping: Record<IconName, string> = {
   sidebar: sidebarSvg,
   "chevron-left": chevronLeftSvg,
   "chevron-right": chevronRightSvg,
+  sun: sunSvg,
+  moon: moonSvg,
 };
 export default iconMapping;
