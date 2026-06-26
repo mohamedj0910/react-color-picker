@@ -390,8 +390,8 @@
   border: 1px solid var(--border-color);
 }
 
-.story-description h3,
-.code-example h3 {
+.story-description h2,
+.code-example h2 {
   font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -689,4 +689,31 @@
 
 body.light .story-theme-toggle-btn:hover {
   border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Light Theme Stories Overrides */
+body.light .story-sidebar {
+  background: #f8fafc;
+}
+
+body.light .sidebar-item.active {
+  box-shadow: none;
+}
+
+body.light .story-sidebar-expand-trigger {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+}
+
+body.light .story-sidebar-expand-trigger:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.light .story-sidebar-mobile-trigger {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+body.light .story-sidebar-mobile-trigger:hover {
+  background: rgba(0, 0, 0, 0.06);
 }

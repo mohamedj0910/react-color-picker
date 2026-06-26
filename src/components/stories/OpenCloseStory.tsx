@@ -16,7 +16,7 @@ export const OpenCloseStory = () => {
       <div className="story-left-column">
         {/* Example Usage First */}
         <div className="code-example">
-          <h3>Usage Example</h3>
+          <h2>Usage Example</h2>
           <p>
             Here is how to monitor toggle events via functions:
           </p>
@@ -27,12 +27,12 @@ export const OpenCloseStory = () => {
 
         {/* Description Second */}
         <div className="story-description">
-          <h3>Callbacks API</h3>
+          <h2>Callbacks API</h2>
           <p>
             Use <code>onOpen</code> and <code>onClose</code> callbacks to hook into color picker panel visibility states.
           </p>
           <br />
-          <h3>How it works</h3>
+          <h2>How it works</h2>
           <p>
             These hooks fire immediately when the selector panel mounts or unmounts, enabling you to trigger analytics logs, play sound highlights, or freeze background elements.
           </p>
@@ -42,7 +42,7 @@ export const OpenCloseStory = () => {
       <div className="story-right-column">
         {/* Sandbox on the right */}
         <div className="try-now-section">
-          <h3 className="try-now-header">Interactive Sandbox</h3>
+          <h2 className="try-now-header">Interactive Sandbox</h2>
           <p className="story-note">
             Open and close the picker to see the counters update.
           </p>

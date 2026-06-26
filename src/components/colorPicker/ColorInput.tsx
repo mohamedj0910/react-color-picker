@@ -18,6 +18,8 @@ export interface ColorInputProps {
   theme?: "light" | "dark";
 }
 
+let colorInputCounter = 0;
+
 export function ColorInput({
   r,
   g,
@@ -31,6 +33,7 @@ export function ColorInput({
   theme = "light",
 }: ColorInputProps) {
   const [activeTab, setActiveTab] = useState<"rgba" | "hsla" | "hex">("rgba");
+  const [baseId] = useState(() => `color-input-${++colorInputCounter}`);
 
   // Local state for inputs
   const [rgbaValues, setRgbaValues] = useState({ r, g, b, a });
@@ -134,36 +137,40 @@ export function ColorInput({
           <div className="input-group-segmented">
             <div className="input-segment">
               <input
+                id={baseId + "-rgba-r"}
                 type="number"
                 min="0"
                 max="255"
                 value={rgbaValues.r}
                 onChange={(e) => handleRgbaChange("r", e.target.value)}
               />
-              <label>R</label>
+              <label htmlFor={baseId + "-rgba-r"}>R</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-rgba-g"}
                 type="number"
                 min="0"
                 max="255"
                 value={rgbaValues.g}
                 onChange={(e) => handleRgbaChange("g", e.target.value)}
               />
-              <label>G</label>
+              <label htmlFor={baseId + "-rgba-g"}>G</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-rgba-b"}
                 type="number"
                 min="0"
                 max="255"
                 value={rgbaValues.b}
                 onChange={(e) => handleRgbaChange("b", e.target.value)}
               />
-              <label>B</label>
+              <label htmlFor={baseId + "-rgba-b"}>B</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-rgba-a"}
                 type="number"
                 min="0"
                 max="1"
@@ -171,7 +178,7 @@ export function ColorInput({
                 value={rgbaValues.a}
                 onChange={(e) => handleRgbaChange("a", e.target.value)}
               />
-              <label>A</label>
+              <label htmlFor={baseId + "-rgba-a"}>A</label>
             </div>
           </div>
         )}
@@ -180,36 +187,40 @@ export function ColorInput({
           <div className="input-group-segmented">
             <div className="input-segment">
               <input
+                id={baseId + "-hsla-h"}
                 type="number"
                 min="0"
                 max="360"
                 value={hslaValues.h}
                 onChange={(e) => handleHslaChange("h", e.target.value)}
               />
-              <label>H</label>
+              <label htmlFor={baseId + "-hsla-h"}>H</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-hsla-s"}
                 type="number"
                 min="0"
                 max="100"
                 value={hslaValues.s}
                 onChange={(e) => handleHslaChange("s", e.target.value)}
               />
-              <label>S</label>
+              <label htmlFor={baseId + "-hsla-s"}>S</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-hsla-l"}
                 type="number"
                 min="0"
                 max="100"
                 value={hslaValues.l}
                 onChange={(e) => handleHslaChange("l", e.target.value)}
               />
-              <label>L</label>
+              <label htmlFor={baseId + "-hsla-l"}>L</label>
             </div>
             <div className="input-segment">
               <input
+                id={baseId + "-hsla-a"}
                 type="number"
                 min="0"
                 max="1"
@@ -217,7 +228,7 @@ export function ColorInput({
                 value={hslaValues.a}
                 onChange={(e) => handleHslaChange("a", e.target.value)}
               />
-              <label>A</label>
+              <label htmlFor={baseId + "-hsla-a"}>A</label>
             </div>
           </div>
         )}
@@ -227,12 +238,13 @@ export function ColorInput({
             <div className="input-segment hex-segment">
               <span className="hex-prefix">#</span>
               <input
+                id={baseId + "-hex"}
                 type="text"
                 value={hexValue.replace("#", "")}
                 onChange={(e) => handleHexChange(e.target.value)}
                 placeholder="000000"
               />
-              <label>HEX</label>
+              <label htmlFor={baseId + "-hex"}>HEX</label>
             </div>
           </div>
         )}

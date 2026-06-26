@@ -1,18 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { ColorPicker } from "./colorPicker/ColorPicker";
 import { Icon } from "./icons/Icon";
+import { useTheme } from "./stories/ThemeContext";
 import "./LandingPage.css";
 
 export const LandingPage = () => {
-  const [accentColor, setAccentColor] = useState({
-    hex: "#6366f1",
-    rgba: "",
-    hsl: "",
+  const { theme } = useTheme();
+  
+  // Set initial state depending on the active theme
+  const [accentColor, setAccentColor] = useState(() => {
+    const isLight = localStorage.getItem("theme") === "light";
+    return {
+      hex: isLight ? "#4f46e5" : "#6366f1",
+      rgba: "",
+      hsl: "",
+    };
   });
+
   const [bgColor, _setBgColor] = useState({ hex: "#1e1b4b", rgba: "", hsl: "" });
   const [pickerTheme, setPickerTheme] = useState<"light" | "dark">("dark");
+
+  // Keep default color in sync with theme switches if the user hasn't customized it
+  useEffect(() => {
+    setAccentColor((prev) => {
+      if (prev.hex === "#6366f1" && theme === "light") {
+        return { ...prev, hex: "#4f46e5" };
+      }
+      if (prev.hex === "#4f46e5" && theme === "dark") {
+        return { ...prev, hex: "#6366f1" };
+      }
+      return prev;
+    });
+  }, [theme]);
 
   return (
     <div className="landing-page animate-fade-in">
@@ -104,14 +125,14 @@ export const LandingPage = () => {
                   className="preview-card-body"
                   style={{
                     /* background: `linear-gradient(135deg, ${bgColor.hex} 0%, #090b16 100%)`, */
-                    background: bgColor.hex,
+                    background: theme === "light" ? "#fafafa" : bgColor.hex,
                     transition: "background var(--transition-slow)",
                   }}
                 >
                   <div className="mock-widget glass-panel">
-                    <h3 style={{ color: accentColor.hex }}>
+                    <h2 style={{ color: accentColor.hex }}>
                       Visual Card Component
-                    </h3>
+                    </h2>
                     <p>
                       Customize my border accents and overall background using
                       the pickers below.

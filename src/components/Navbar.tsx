@@ -54,7 +54,7 @@ export const Navbar = () => {
           </button>
 
           <a
-            href="https://github.com"
+            href="https://github.com/mohamedj0910/react-color-picker"
             target="_blank"
             rel="noopener noreferrer"
             className="github-link"
