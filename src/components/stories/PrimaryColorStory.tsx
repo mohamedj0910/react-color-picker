@@ -7,6 +7,7 @@ export const PrimaryColorStory = () => {
   const [primaryColor, setPrimaryColor] = useState("#4f46e5");
   const [color, setColor] = useState({ hex: "#6366f1", rgba: "", hsl: "" });
   const { theme } = useTheme();
+  const inputId = "primary-color-input";
 
   const codeString = exampleUsageMap.primaryColor(primaryColor);
 
@@ -15,7 +16,7 @@ export const PrimaryColorStory = () => {
       <div className="story-left-column">
         {/* Example Usage First */}
         <div className="code-example">
-          <h3>Usage Example</h3>
+          <h2>Usage Example</h2>
           <p>
             Customize the primary accent color:
           </p>
@@ -26,12 +27,12 @@ export const PrimaryColorStory = () => {
 
         {/* Description Second */}
         <div className="story-description">
-          <h3>Prop API</h3>
+          <h2>Prop API</h2>
           <p>
             The <code>primaryColor</code> prop controls the primary accent color used in the panel UI layout.
           </p>
           <br />
-          <h3>How it works</h3>
+          <h2>How it works</h2>
           <p>
             The value is fed dynamically as a CSS variable to highlight buttons, slider track nodes, ticks, and interactive inputs.
           </p>
@@ -41,13 +42,13 @@ export const PrimaryColorStory = () => {
       <div className="story-right-column">
         {/* Sandbox on the right */}
         <div className="try-now-section">
-          <h3 className="try-now-header">Interactive Sandbox</h3>
+          <h2 className="try-now-header">Interactive Sandbox</h2>
           <p className="story-note">
             Adjust the primary color to see the panel accents update.
           </p>
 
           <div className="control-panel">
-            <label>Primary Color:</label>
+            <label htmlFor={inputId}>Primary Color:</label>
             <ColorPicker
               value={primaryColor}
               onChange={(next) => setPrimaryColor(next.hex)}
@@ -55,6 +56,7 @@ export const PrimaryColorStory = () => {
               theme={theme}
             />
             <input
+              id={inputId}
               type="text"
               value={primaryColor}
               onChange={(e) => setPrimaryColor(e.target.value)}

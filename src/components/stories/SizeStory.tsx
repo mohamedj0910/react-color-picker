@@ -7,6 +7,7 @@ export const SizeStory = () => {
   const [size, setSize] = useState(40);
   const [color, setColor] = useState({ hex: "#4caf50", rgba: "", hsl: "" });
   const { theme } = useTheme();
+  const inputId = "size-input";
 
   const codeString = exampleUsageMap.size(size);
 
@@ -15,7 +16,7 @@ export const SizeStory = () => {
       <div className="story-left-column">
         {/* Render Example Usage First */}
         <div className="code-example">
-          <h3>Usage Example</h3>
+          <h2>Usage Example</h2>
           <p>
             Adjust the slider in the playground. The code block will update the custom
             size prop accordingly:
@@ -27,14 +28,14 @@ export const SizeStory = () => {
 
         {/* Render Prop API / Description Second */}
         <div className="story-description">
-          <h3>Prop API</h3>
+          <h2>Prop API</h2>
           <p>
             The <code>size</code> prop allows you to control the dimensions (width
             and height) of the Color Picker trigger button. It accepts a number
             representing pixels (e.g., <code>40</code> for 40px).
           </p>
           <br />
-          <h3>How it works</h3>
+          <h2>How it works</h2>
           <p>
             When you pass a number to the <code>size</code> prop, it sets both the
             inline <code>width</code> and <code>height</code> styles of the square
@@ -47,14 +48,15 @@ export const SizeStory = () => {
       <div className="story-right-column">
         {/* Render Interactive Sandbox on the right */}
         <div className="try-now-section">
-          <h3 className="try-now-header">Interactive Sandbox</h3>
+          <h2 className="try-now-header">Interactive Sandbox</h2>
           <p className="story-note">
             Enter a value below to see the Color Picker resize in real-time.
           </p>
 
           <div className="control-panel">
-            <label>Size (px):</label>
+            <label htmlFor={inputId}>Size (px):</label>
             <input
+              id={inputId}
               type="number"
               value={size}
               onChange={(e) => setSize(Number(e.target.value))}

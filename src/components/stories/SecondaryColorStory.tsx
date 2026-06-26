@@ -7,6 +7,7 @@ export const SecondaryColorStory = () => {
   const [secondaryColor, setSecondaryColor] = useState("#ef4444");
   const [color, setColor] = useState({ hex: "#f43f5e", rgba: "", hsl: "" });
   const { theme } = useTheme();
+  const inputId = "secondary-color-input";
 
   const codeString = exampleUsageMap.secondaryColor(secondaryColor);
 
@@ -15,7 +16,7 @@ export const SecondaryColorStory = () => {
       <div className="story-left-column">
         {/* Example Usage First */}
         <div className="code-example">
-          <h3>Usage Example</h3>
+          <h2>Usage Example</h2>
           <p>
             Pair a secondary accent with your primary brand accent:
           </p>
@@ -26,12 +27,12 @@ export const SecondaryColorStory = () => {
 
         {/* Description Second */}
         <div className="story-description">
-          <h3>Prop API</h3>
+          <h2>Prop API</h2>
           <p>
             The <code>secondaryColor</code> prop controls the secondary accent highlights used in the panel UI layout.
           </p>
           <br />
-          <h3>How it works</h3>
+          <h2>How it works</h2>
           <p>
             This value feeds a secondary CSS variables pipeline for alerts, cancel buttons, escape hints, and selection indicators.
           </p>
@@ -41,13 +42,13 @@ export const SecondaryColorStory = () => {
       <div className="story-right-column">
         {/* Sandbox on the right */}
         <div className="try-now-section">
-          <h3 className="try-now-header">Interactive Sandbox</h3>
+          <h2 className="try-now-header">Interactive Sandbox</h2>
           <p className="story-note">
             Adjust the secondary color to see the panel accents update.
           </p>
 
           <div className="control-panel">
-            <label>Secondary Color:</label>
+            <label htmlFor={inputId}>Secondary Color:</label>
             <ColorPicker
               value={secondaryColor}
               onChange={(next) => setSecondaryColor(next.hex)}
@@ -55,6 +56,7 @@ export const SecondaryColorStory = () => {
               theme={theme}
             />
             <input
+              id={inputId}
               type="text"
               value={secondaryColor}
               onChange={(e) => setSecondaryColor(e.target.value)}
