@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { ColorPicker } from "./colorPicker/ColorPicker";
+import { ColorPicker } from "react-color-picker";
 import { Icon } from "./icons/Icon";
 import { useTheme } from "./stories/ThemeContext";
 import "./LandingPage.css";

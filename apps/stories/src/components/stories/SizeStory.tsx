@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ColorPicker } from "../colorPicker/ColorPicker";
+import { ColorPicker } from "react-color-picker";
 import { exampleUsageMap } from "./exampleUsage";
 import { useTheme } from "./ThemeContext";
 

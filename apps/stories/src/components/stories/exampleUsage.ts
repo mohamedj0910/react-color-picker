@@ -4,7 +4,7 @@ export const exampleUsageMap: Record<
   STORY_ITEM,
   (state: any) => string
 > = {
-  size: (size: number) => `import { ColorPicker } from "@react/react-color-picker";
+  size: (size: number) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -14,7 +14,7 @@ export default function App() {
     />
   );
 }`,
-  theme: (theme: string) => `import { ColorPicker } from "@react/react-color-picker";
+  theme: (theme: string) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -24,7 +24,7 @@ export default function App() {
     />
   );
 }`,
-  backgroundColor: (bgColor: string) => `import { ColorPicker } from "@react/react-color-picker";
+  backgroundColor: (bgColor: string) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -34,7 +34,7 @@ export default function App() {
     />
   );
 }`,
-  primaryColor: (primaryColor: string) => `import { ColorPicker } from "@react/react-color-picker";
+  primaryColor: (primaryColor: string) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -44,7 +44,7 @@ export default function App() {
     />
   );
 }`,
-  secondaryColor: (secondaryColor: string) => `import { ColorPicker } from "@react/react-color-picker";
+  secondaryColor: (secondaryColor: string) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -54,7 +54,7 @@ export default function App() {
     />
   );
 }`,
-  applyOnEscape: (applyOnEscape: boolean) => `import { ColorPicker } from "@react/react-color-picker";
+  applyOnEscape: (applyOnEscape: boolean) => `import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   return (
@@ -65,7 +65,7 @@ export default function App() {
   );
 }`,
   openClose: (_state: { openCount: number; closeCount: number }) => `import { useState } from "react";
-import { ColorPicker } from "@react/react-color-picker";
+import { ColorPicker } from "react-color-picker";
 
 export default function App() {
   const [openCount, setOpenCount] = useState(0);
