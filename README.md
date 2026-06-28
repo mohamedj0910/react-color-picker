@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# React Color Picker Monorepo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Turborepo-managed monorepo containing a reusable React color picker library and a demo/playground stories app.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```text
+.
+├── apps/
+│   └── stories/                  # Playground & demo React application (Vite)
+│       ├── src/
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       └── vercel.json           # Vercel routing configuration for SPA
+│
+├── packages/
+│   └── color-picker/             # Reusable React Color Picker Component Library
+│       ├── src/
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── vite.config.ts
+│
+├── package.json                  # Workspace configurations and orchestration scripts
+├── turbo.json                    # Turborepo task pipeline configuration
+├── pnpm-workspace.yaml           # Workspace packages mapping
+├── tsconfig.json                 # Root TypeScript orchestration project references
+└── eslint.config.js              # Global ESLint configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+Make sure you have `pnpm` installed.
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### 1. Install Dependencies
+Run from the workspace root:
+```bash
+pnpm install
 ```
+
+### 2. Start Development Server
+Starts the playground app (`apps/stories`) with hot reloading of library modifications:
+```bash
+pnpm dev
+```
+
+### 3. Build Workspaces
+Compiles the library first, then compiles the playground app for production:
+```bash
+pnpm build
+```
+
+### 4. Lint Codebase
+Runs ESLint across all projects in the workspace:
+```bash
+pnpm lint
+```
+
+---
+
+## Vercel Deployment Guide
+
+To deploy the **Stories Playground** to Vercel, follow these settings in the Vercel dashboard:
+
+1. **Framework Preset**: `Vite` (Vercel should auto-detect this).
+2. **Root Directory**: `apps/stories`
+3. **Build Command**:
+   ```bash
+   cd ../.. && pnpm build
+   ```
+   *(This goes back to the monorepo root to build the workspaces in the correct order)*
+4. **Output Directory**: `dist` *(relative to `apps/stories`, pointing to `apps/stories/dist`)*
+5. **Install Command**: (Leave as default or let Vercel handle it using the root `pnpm-workspace.yaml` automatically).
+
+### Routing Configuration
+The application is configured as a Single Page Application (SPA) using [vercel.json](file:///D:/Projects/react-color-picker/apps/stories/vercel.json) inside `apps/stories`:
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+This handles client-side routing fallback redirects correctly when deployed.
